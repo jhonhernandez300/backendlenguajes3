@@ -1,0 +1,6 @@
+G:\Punto net Core codigo de ejemplo\LenguajesIII\obj\Debug\netcoreapp3.1\LenguajesIII.csproj.AssemblyReference.cache
+G:\Punto net Core codigo de ejemplo\LenguajesIII\obj\Debug\netcoreapp3.1\LenguajesIII.GeneratedMSBuildEditorConfig.editorconfig
+G:\Punto net Core codigo de ejemplo\LenguajesIII\obj\Debug\netcoreapp3.1\LenguajesIII.AssemblyInfoInputs.cache
+G:\Punto net Core codigo de ejemplo\LenguajesIII\obj\Debug\netcoreapp3.1\LenguajesIII.AssemblyInfo.cs
+G:\Punto net Core codigo de ejemplo\LenguajesIII\obj\Debug\netcoreapp3.1\LenguajesIII.csproj.CoreCompileInputs.cache
+G:\Punto net Core codigo de ejemplo\LenguajesIII\obj\Debug\netcoreapp3.1\LenguajesIII.MvcApplicationPartsAssemblyInfo.cache
