@@ -25,14 +25,22 @@ namespace LenguajesIII.Controllers
         [HttpGet("GetTodosLosPedidos")]
         public async Task<IActionResult> GetTodosLosPedidos()
         {
-            var result = await _context.Pedido.ToListAsync();
-
-            if (result.Count == 0)
+            try
             {
-                return NotFound();
-            }
+                var result = await _context.Pedido.ToListAsync();
 
-            return Ok(result);
+                if (result.Count == 0)
+                {
+                    return NotFound();
+                }
+
+                return Ok(result);
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, "Internal Server Error");
+            }           
         }
        
         [HttpGet("GetPedidoPorId/{id}")]
@@ -43,23 +51,39 @@ namespace LenguajesIII.Controllers
                 return BadRequest("Request is incorrect");
             }
 
-            var result = await _context.Pedido.FindAsync(id);
-
-            if (result == null)
+            try
             {
-                return NotFound();
-            }
+                var result = await _context.Pedido.FindAsync(id);
 
-            return Ok(result);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(result);
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, "Internal Server Error");
+            }
         }
 
         // POST: api/GuardarPedido       
         [HttpPost("GuardarPedido")]
         public async Task<ActionResult<Pedidos>> GuardarPedido([FromBody] Pedidos pedido)
         {
-            _context.Pedido.Add(pedido);
-            await _context.SaveChangesAsync();
-            return pedido;
+            try
+            {
+                _context.Pedido.Add(pedido);
+                await _context.SaveChangesAsync();
+                return pedido;
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, "Internal Server Error");
+            }
         }
 
         
@@ -106,16 +130,24 @@ namespace LenguajesIII.Controllers
                 return BadRequest("Request is incorrect");
             }
 
-            var result = await _context.Pedido.FindAsync(id);
-
-            if (result == null)
+            try
             {
-                return NotFound();
-            }
+                var result = await _context.Pedido.FindAsync(id);
 
-            _context.Pedido.Remove(result);
-            await _context.SaveChangesAsync();
-            return id;
+                if (result == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Pedido.Remove(result);
+                await _context.SaveChangesAsync();
+                return id;
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, "Internal Server Error");
+            }           
         }
     }
 }

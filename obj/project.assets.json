@@ -2176,11 +2176,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Punto net Core codigo de ejemplo\\LenguajesIII\\LenguajesIII.csproj",
+      "projectUniqueName": "G:\\Punto net Core codigo de ejemplo\\Lenguajes3\\LenguajesIII.csproj",
       "projectName": "LenguajesIII",
-      "projectPath": "G:\\Punto net Core codigo de ejemplo\\LenguajesIII\\LenguajesIII.csproj",
+      "projectPath": "G:\\Punto net Core codigo de ejemplo\\Lenguajes3\\LenguajesIII.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "G:\\Punto net Core codigo de ejemplo\\LenguajesIII\\obj\\",
+      "outputPath": "G:\\Punto net Core codigo de ejemplo\\Lenguajes3\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",

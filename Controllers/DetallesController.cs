@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using LenguajesIII.Models;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
 
 namespace LenguajesIII.Controllers
 {
@@ -22,60 +23,98 @@ namespace LenguajesIII.Controllers
         [HttpGet("GetTodosLosDetalles")]
         public async Task<IActionResult> GetTodosLosDetalles()
         {
-            var result = await _context.Detalle.ToListAsync();
+            try
+            {                
+                var result = await _context.Detalle.ToListAsync();
+                
+                if (result.Count == 0)
+                {
+                    return NotFound();
+                }
 
-            if (result.Count == 0)
-            {
-                return NotFound();
+                return Ok(result);
             }
-
-            return Ok(result);
+            catch (System.Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, "Internal Server Error");
+            }                        
         }
 
         // GET: api/GetDetallePorId
-        [HttpGet("GetDetallePorId")]
-        public async Task<IActionResult> GetDetallePorId([FromBody] Detalles detalle)
+        [HttpGet("GetDetallePorId/{id}")]
+        public async Task<IActionResult> GetDetallePorId(int id)
         {
-            if (string.IsNullOrEmpty(detalle.IdDetalle.ToString()))
+            if (string.IsNullOrEmpty(id.ToString()))
             {
                 return BadRequest("Request is incorrect");
             }
-
-            var result = await _context.Detalle.FindAsync(detalle.IdDetalle);
-
-            if (result == null)
+            try
             {
-                return NotFound();
-            }
+                var result = await _context.Detalle.FindAsync(id);
 
-            return Ok(result);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(result);
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, "Internal Server Error");
+            }
         }
 
-        [HttpGet("GetDetallePorIdPedido/{id}")]
-        public ActionResult<Pedidos> GetDetallePorIdPedido(int id)
+        [HttpGet("GetDetallesPorIdPedido/{id}")]
+        public ActionResult<Pedidos> GetDetallesPorIdPedido(int id)
         {
             if (string.IsNullOrEmpty(id.ToString()))
             {
                 return BadRequest("Request is incorrect");
             }
 
-            var result = _context.Detalle.Where(x => x.IdPedido == id);
-
-            if (result == null)
+            try
             {
-                return NotFound();
-            }
+                var result = _context.Detalle.Where(x => x.IdPedido == id);
 
-            return Ok(result);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(result);
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, "Internal Server Error");
+            }
         }
+
+      
 
         // POST: api/GuardarDetalle       
         [HttpPost("GuardarDetalle")]
         public async Task<ActionResult<Detalles>> GuardarDetalle([FromBody] Detalles detalle)
         {
-            _context.Detalle.Add(detalle);
-            await _context.SaveChangesAsync();
-            return detalle;
+            if (string.IsNullOrEmpty(detalle.IdDetalle.ToString()))
+            {
+                return BadRequest("Request is incorrect");
+            }
+            
+            try
+            {
+                _context.Detalle.Add(detalle);
+                await _context.SaveChangesAsync();
+                return detalle;
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, "Internal Server Error");
+            }           
         }        
 
         [HttpDelete("EliminarDetalle/{id}")]
@@ -86,16 +125,24 @@ namespace LenguajesIII.Controllers
                 return BadRequest("Request is incorrect");
             }
 
-            var result = await _context.Detalle.FindAsync(id);
-
-            if (result == null)
+            try
             {
-                return NotFound();
-            }
+                var result = await _context.Detalle.FindAsync(id);
 
-            _context.Detalle.Remove(result);
-            await _context.SaveChangesAsync();
-            return id;
-        }
+                if (result == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Detalle.Remove(result);
+                await _context.SaveChangesAsync();
+                return id;
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, "Internal Server Error");
+            }
+        }        
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "S641UdAGiwgqHWYMAb3zGJNdouc2Y9WJ7O845DSihWnZbp3UvrPgPS1WlX5hll3oTy/seliMrASK++i5WlrqAg==",
+  "dgSpecHash": "liwT5lFt9egNlu7exrkpYICev0rAvoDKsoRCKGvDv2Diup3wko7a6XM4lQE2fpIzo/RIJgxW3ElkPB7H2seAuw==",
   "success": true,
-  "projectFilePath": "G:\\Punto net Core codigo de ejemplo\\LenguajesIII\\LenguajesIII.csproj",
+  "projectFilePath": "G:\\Punto net Core codigo de ejemplo\\Lenguajes3\\LenguajesIII.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.5\\microsoft.aspnetcore.jsonpatch.6.0.5.nupkg.sha512",
